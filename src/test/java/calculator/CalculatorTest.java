@@ -6,21 +6,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
 
+    Calculator calculator = new Calculator();
+
     @Test
     void calculatorClassExists() {
-        Calculator calculator = new Calculator();
     }
 
     @Test
     void addMethodExists() {
-        Calculator calculator = new Calculator();
         calculator.add("");
     }
 
     @Test
     void addMethodReturnsZeroWhenInputIsEmpty() {
-        Calculator calculator = new Calculator();
         assertEquals(0, calculator.add(""));
+    }
+
+    @Test
+    void addMethodReturnsSumOfInput() {
+        assertEquals(4, calculator.add("2,2"));
     }
 
 }
