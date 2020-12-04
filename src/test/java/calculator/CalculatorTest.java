@@ -47,4 +47,9 @@ public class CalculatorTest {
         assertEquals(1, calculator.add("1\n,"));
     }
 
+    @Test
+    void addMethodHandlesDifferentDelimiters() {
+        assertEquals(3, calculator.add("//;\n1;2"));
+    }
+
 }
