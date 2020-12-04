@@ -42,4 +42,9 @@ public class CalculatorTest {
         assertEquals(6, calculator.add("1\n2,3"));
     }
 
+    @Test
+    void addMethodHandlesNewLineDelimiterAndComma() {
+        assertEquals(1, calculator.add("1\n,"));
+    }
+
 }
