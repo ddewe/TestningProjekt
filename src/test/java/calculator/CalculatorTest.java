@@ -63,4 +63,9 @@ public class CalculatorTest {
         assertEquals(10, calculator.add("1200,5,5"));
     }
 
+    @Test
+    void delimitersCanBeOfAnyLength() {
+        assertEquals(6, calculator.add("//[***]\n1***2***3"));
+    }
+
 }

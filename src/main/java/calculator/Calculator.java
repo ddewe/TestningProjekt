@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 public class Calculator {
 
     private List<Integer> negativeNumbers = new ArrayList<>();
+    private String delimiter = "";
 
     public int add(String numbers) {
         if (numbers.length() == 0) return 0;
@@ -23,6 +24,7 @@ public class Calculator {
         CheckForNegativeNumbers(intList);
 
         return Arrays.stream(intList).sum();
+
     }
 
     private void CheckForNegativeNumbers(int[] intList) {
@@ -39,13 +41,20 @@ public class Calculator {
 
     private String ReturnRefactoredString(String numbers) {
 
-        if (numbers.startsWith("//")) {
-            String delimiter = String.valueOf(numbers.charAt(2));
+        //[***]\n1***2***3
+        if (numbers.startsWith("//[")) {
+            delimiter = numbers.substring(numbers.indexOf("[") + 1, numbers.indexOf("]"));
+            numbers = numbers.substring(5 + delimiter.length());
+            numbers = numbers.replace(delimiter, ",");
+        }
+        else if (numbers.startsWith("//")) {
+            delimiter = String.valueOf(numbers.charAt(2));
             numbers = numbers.replace(delimiter, ",");
             numbers = numbers.substring(4);
         }
 
         numbers = numbers.replace("\n", ",");
+
         return numbers;
     }
 }
