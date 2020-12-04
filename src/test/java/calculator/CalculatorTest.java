@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 
@@ -50,6 +51,11 @@ public class CalculatorTest {
     @Test
     void addMethodHandlesDifferentDelimiters() {
         assertEquals(3, calculator.add("//;\n1;2"));
+    }
+
+    @Test
+    void negativeInputsThrowsException() {
+        assertThrows(IllegalArgumentException.class, ()-> calculator.add("-5,-1"));
     }
 
 }
