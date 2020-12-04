@@ -27,4 +27,9 @@ public class CalculatorTest {
         assertEquals(4, calculator.add("2,2"));
     }
 
+    @Test
+    void addMethodReturnsSumOfSingleDigitInput() {
+        assertEquals(5, calculator.add("5"));
+    }
+
 }
