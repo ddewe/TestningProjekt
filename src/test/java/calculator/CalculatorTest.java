@@ -32,4 +32,9 @@ public class CalculatorTest {
         assertEquals(5, calculator.add("5"));
     }
 
+    @Test
+    void addMethodReturnsSumOfUnknownAmountOfInputs() {
+        assertEquals(6, calculator.add("1,2,3"));
+    }
+
 }
