@@ -16,7 +16,9 @@ public class Calculator {
 
         numbers = ReturnRefactoredString(numbers);
 
-        int[] intList = Stream.of(numbers.split(",")).mapToInt(Integer::parseInt).toArray();
+        int[] intList = Stream.of(numbers.split(","))
+                .filter(number -> Integer.parseInt(number) < 1000)
+                .mapToInt(Integer::parseInt).toArray();
 
         CheckForNegativeNumbers(intList);
 

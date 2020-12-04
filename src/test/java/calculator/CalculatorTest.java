@@ -58,4 +58,9 @@ public class CalculatorTest {
         assertThrows(IllegalArgumentException.class, ()-> calculator.add("-5,-1"));
     }
 
+    @Test
+    void addMethodIgnoresNumbersBiggerThan1000() {
+        assertEquals(10, calculator.add("1200,5,5"));
+    }
+
 }
