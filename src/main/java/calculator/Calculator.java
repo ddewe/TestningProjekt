@@ -41,11 +41,21 @@ public class Calculator {
 
     private String ReturnRefactoredString(String numbers) {
 
-        //[***]\n1***2***3
+
+        //[,]\n1***2***3
+        //[*][%]\n1*2%3
+
         if (numbers.startsWith("//[")) {
             delimiter = numbers.substring(numbers.indexOf("[") + 1, numbers.indexOf("]"));
-            numbers = numbers.substring(5 + delimiter.length());
             numbers = numbers.replace(delimiter, ",");
+            numbers = numbers.substring(numbers.indexOf("]") + 2);
+
+            while (numbers.charAt(1) == ']') {
+                delimiter = numbers.substring(numbers.indexOf("[") + 1, numbers.indexOf("]"));
+                numbers = numbers.replace(delimiter, ",");
+                numbers = numbers.substring(numbers.indexOf("]") + 2);
+            }
+
         }
         else if (numbers.startsWith("//")) {
             delimiter = String.valueOf(numbers.charAt(2));

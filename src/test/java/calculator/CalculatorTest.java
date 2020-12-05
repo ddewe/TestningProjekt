@@ -68,4 +68,9 @@ public class CalculatorTest {
         assertEquals(6, calculator.add("//[***]\n1***2***3"));
     }
 
+    @Test
+    void addMethodHandlesTwoDelimiters() {
+        assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
+    }
+
 }
