@@ -44,6 +44,7 @@ public class Calculator {
 
         //[,]\n1***2***3
         //[*][%]\n1*2%3
+        //[*][%][#]\n1*2%3
 
         if (numbers.startsWith("//[")) {
             delimiter = numbers.substring(numbers.indexOf("[") + 1, numbers.indexOf("]"));
@@ -51,7 +52,8 @@ public class Calculator {
             numbers = numbers.substring(numbers.indexOf("]") + 2);
 
             while (numbers.charAt(1) == ']') {
-                delimiter = numbers.substring(numbers.indexOf("[") + 1, numbers.indexOf("]"));
+
+                delimiter = numbers.substring(0, numbers.indexOf("]"));
                 numbers = numbers.replace(delimiter, ",");
                 numbers = numbers.substring(numbers.indexOf("]") + 2);
             }
