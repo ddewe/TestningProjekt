@@ -76,4 +76,10 @@ public class CalculatorTest {
         assertEquals(6, calculator.add(multipleDelimiters));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"//[**][%%%%]\n1**2%%%%3", "//[****][%][###]\n1****2%2###1"})
+    void MultipleDelimitersCanBeOfAnyLength(String unknownLengthDelimiters) {
+        assertEquals(6, calculator.add(unknownLengthDelimiters));
+    }
+
 }
