@@ -1,6 +1,8 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -68,14 +70,10 @@ public class CalculatorTest {
         assertEquals(6, calculator.add("//[***]\n1***2***3"));
     }
 
-    @Test
-    void addMethodHandlesTwoDelimiters() {
-        assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
-    }
-
-    @Test
-    void addMethodHandlesThreeDelimiters() {
-        assertEquals(6, calculator.add("//[*][%][#]\n1*2%3"));
+    @ParameterizedTest
+    @ValueSource(strings = {"//[*][%]\n1*2%3", "//[*][%][#]\n1*2%3"})
+    void AddMethodHandlesMultipleDelimiters(String multipleDelimiters) {
+        assertEquals(6, calculator.add(multipleDelimiters));
     }
 
 }
