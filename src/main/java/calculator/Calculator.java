@@ -7,8 +7,7 @@ import java.util.stream.Stream;
 
 public class Calculator {
 
-    private List<Integer> negativeNumbers = new ArrayList<>();
-    private String delimiter = "";
+    private final List<Integer> negativeNumbers = new ArrayList<>();
 
     public int add(String numbers) {
         if (numbers.length() == 0) return 0;
@@ -41,6 +40,7 @@ public class Calculator {
 
     private String ReturnRefactoredString(String numbers) {
 
+        String delimiter;
         if (numbers.startsWith("//[")) {
             delimiter = numbers.substring(numbers.indexOf("[") + 1, numbers.indexOf("]"));
             numbers = numbers.replace(delimiter, ",");
@@ -61,6 +61,7 @@ public class Calculator {
         }
 
         numbers = numbers.replace("\n", ",");
+        numbers = numbers.replace(" ", "");
 
         return numbers;
     }

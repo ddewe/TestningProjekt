@@ -73,4 +73,9 @@ public class CalculatorTest {
         assertEquals(6, calculator.add(unknownLengthDelimiters), "Add method should be able to handle unknown amounts of delimiters of unknown length");
     }
 
+    @Test
+    void addMethodCanHandleSpacesInInput() {
+        assertEquals(10, calculator.add("5, 5"), "Add method should be able to handle spaces in the input");
+    }
+
 }
