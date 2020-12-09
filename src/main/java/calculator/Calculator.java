@@ -17,7 +17,7 @@ public class Calculator {
         numbers = ReturnRefactoredString(numbers);
 
         int[] intList = Stream.of(numbers.split(","))
-                .filter(number -> Integer.parseInt(number) < 1000)
+                .filter(number -> Integer.parseInt(number) <= 1000)
                 .mapToInt(Integer::parseInt).toArray();
 
         CheckForNegativeNumbers(intList);
@@ -33,8 +33,7 @@ public class Calculator {
             }
         }
         if (!negativeNumbers.isEmpty()) {
-            System.out.println("Negatives not allowed: " + negativeNumbers.toString());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Negatives not allowed: " + negativeNumbers.toString());
         }
     }
 

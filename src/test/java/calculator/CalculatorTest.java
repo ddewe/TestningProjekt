@@ -26,7 +26,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"6", "3,3", "2,2,2"})
+    @ValueSource(strings = {"6", "3,3", "2,2,2", "0, 6"})
     void addMethodHandlesUnknownAmountsOfInput(String unknownAmountOfInputs) {
         assertEquals(6, calculator.add(unknownAmountOfInputs), "Add method should return sum of input regardless of the amount of inputs.");
     }
@@ -43,9 +43,10 @@ public class CalculatorTest {
         assertThrows(IllegalArgumentException.class, ()-> calculator.add("-5,-1"), "Add method should throw an IllegalArgumentException when input contains negative numbers.");
     }
 
-    @Test
-    void addMethodIgnoresNumbersBiggerThan1000() {
-        assertEquals(10, calculator.add("1200,5,5"), "Add method should ignore numbers above 1000");
+    @ParameterizedTest
+    @ValueSource(strings = {"1200,500,501", "1000, 1"})
+    void addMethodIgnoresNumbersBiggerThan1000(String numbersOver1000) {
+        assertEquals(1001, calculator.add(numbersOver1000), "Add method should ignore numbers above 1000");
     }
 
     @Test
