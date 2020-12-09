@@ -31,19 +31,11 @@ public class CalculatorTest {
         assertEquals(6, calculator.add(unknownAmountOfInputs), "Add method should return sum of input regardless of the amount of inputs.");
     }
 
-    @Test
-    void addMethodHandlesNewLineDelimiter() {
-        assertEquals(6, calculator.add("1\n2,3"), "Add method should be able to handle New Line as a delimiter.");
-    }
 
-    @Test
-    void addMethodHandlesNewLineDelimiterAndComma() {
-        assertEquals(1, calculator.add("1\n,"), "Add method should be able to handle input even when it contains both New Line and commas");
-    }
-
-    @Test
-    void addMethodHandlesDifferentDelimiters() {
-        assertEquals(3, calculator.add("//;\n1;2"), "Add method should be able to handle different delimiters");
+    @ParameterizedTest
+    @ValueSource(strings = {"//[*][%]\n1*2%3", "//[*][%][#]\n1*2%3", "1\n2,3", "6\n,", "//;\n1;5", "//[***]\n1***2***3", "//[**][%%%%]\n1**2%%%%3", "//[****][%][###]\n1****2%2###1"})
+    void addMethodHandlesAllDelimiterScenarios(String DifferentDelimiters) {
+        assertEquals(6, calculator.add(DifferentDelimiters), "Add method should be able to handle different delimiters in same input");
     }
 
     @Test
@@ -54,23 +46,6 @@ public class CalculatorTest {
     @Test
     void addMethodIgnoresNumbersBiggerThan1000() {
         assertEquals(10, calculator.add("1200,5,5"), "Add method should ignore numbers above 1000");
-    }
-
-    @Test
-    void delimitersCanBeOfAnyLength() {
-        assertEquals(6, calculator.add("//[***]\n1***2***3"), "Add method should be able to handle delimiters of any length");
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"//[*][%]\n1*2%3", "//[*][%][#]\n1*2%3"})
-    void AddMethodHandlesMultipleDelimiters(String multipleDelimiters) {
-        assertEquals(6, calculator.add(multipleDelimiters), "Add method should be able to handle different delimiters in same input");
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"//[**][%%%%]\n1**2%%%%3", "//[****][%][###]\n1****2%2###1"})
-    void MultipleDelimitersCanBeOfAnyLength(String unknownLengthDelimiters) {
-        assertEquals(6, calculator.add(unknownLengthDelimiters), "Add method should be able to handle unknown amounts of delimiters of unknown length");
     }
 
     @Test
