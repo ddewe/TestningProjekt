@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 
-    Calculator calculator = new Calculator();
+    final Calculator calculator = new Calculator();
 
     @Test
     void calculatorClassExists() {

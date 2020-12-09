@@ -44,13 +44,11 @@ public class Calculator {
         if (numbers.startsWith("//[")) {
             delimiter = numbers.substring(numbers.indexOf("[") + 1, numbers.indexOf("]"));
             numbers = numbers.replace(delimiter, ",");
-            delimiter = delimiter.substring(0, 1);
             numbers = numbers.substring(numbers.indexOf("]") + 2);
 
             while (numbers.contains("]")) {
                 delimiter = numbers.substring(0, numbers.indexOf("]"));
                 numbers = numbers.replace(delimiter, ",");
-                delimiter = delimiter.substring(0, 1);
                 numbers = numbers.substring(numbers.indexOf("]") + 2);
             }
         }
